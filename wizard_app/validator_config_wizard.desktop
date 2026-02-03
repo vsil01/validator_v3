@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Validator Config Wizard
+Comment=Edit validator config.json without touching code
+Exec=python3 /workspace/validator_v3/wizard_app/app.py
+Icon=/workspace/validator_v3/wizard_app/validator_wizard.svg
+Terminal=false
+Categories=Utility;
