@@ -1,0 +1,182 @@
+{
+  "PROJECT": "abcd",
+  "INPUT_GDB": "C:\\Users\\Korisnik 19\\Desktop\\VALIDATOR_UPUTSTVO\\input_gdb\\test.gdb",
+  "SCRATCH_GDB": "C:\\Users\\Korisnik 19\\Desktop\\VALIDATOR_TEST\\output\\123test_020226.gdb",
+  "RESULTS_CSV": "C:\\Users\\Korisnik 19\\Desktop\\VALIDATOR_TEST\\output/results020226.csv",
+  "SECENJE_CEVI": {
+    "LINES_FC": "Cevovod_validator",
+    "POINT_FCS": [
+      "Fitinzi",
+	  "Ekspanziona_posuda",
+	  "Ispusti",
+	  "Hidranti",
+	  "Meraci_protoka",
+	  "Meraci_pritiska",
+	  "Rezervoari",
+	  "Vazdusni_ventili",
+	  "PRV",
+	  "Izvorista",
+	  "Nepovratni_ventil",
+	  "PPV",
+	  "Pumpe",
+	  "Zatvaraci"
+    ],
+    "EXPECTED_JOIN_COUNT": 2
+  },
+  "SECENJE_TACAKA": {
+    "MERGE_LAYER": "Cevovod_validator",
+	"INACTIVE_FILTER": {
+		"ENABLED": true,
+		"APPLY_TO_LAYERS": ["Meraci_protoka", "Meraci_pritiska"],
+		"FIELD_KEY": "STATUS",
+		"VALUE_GROUP": "STATUS",
+		"VALUE_KEY": "INACTIVE"
+	  },
+    "IGNORE_RULES": [
+  {
+    "APPLY_TO_LAYER": "Zatvaraci",
+    "FIELD_KEY": "USAGE",
+    "OP": "=",
+    "VALUE": "Ne"
+  }
+],
+    "LAYERS": [
+      {
+        "NAME": "Fitinzi",
+        "TIP_FIELD": "tip",
+        "TIP_RULES": {
+          "X komad": 1,
+          "Kraj cevi": 1,
+          "Kraj priključka": 1,
+          "T komad": 3,
+          "TT komad": 4
+        }
+      },
+      {
+        "NAME": "Ekspanziona_posuda",
+        "EXPECTED": 1
+      },
+	  {
+		"NAME": "Izvorista",
+		"EXPECTED": 1
+	  },
+	  {
+    "NAME": "Ispusti",
+    "EXPECTED": 1,
+    "TIP_FIELD": "tip",
+    "TIP_RULES": {
+      "Hvatač nečistoća": 2
+    }
+	  },
+	  {
+		"NAME": "Vazdusni_ventili",
+		"EXPECTED": 1
+	  },
+	  {
+		"NAME": "Hidranti",
+		"EXPECTED": 1
+	  },
+	  {
+		"NAME": "Meraci_protoka",
+		"EXPECTED": 2
+	  },
+	  	  {
+		"NAME": "Rezervoari",
+		"EXPECTED": { "op": ">=", "value": 2 }
+	  },
+	  	  {
+		"NAME": "Pumpe",
+		"EXPECTED": 2
+	  },
+	  	  {
+		"NAME": "Zatvaraci",
+		"EXPECTED": 2
+	  },
+	  	  	  {
+		"NAME": "Nepovratni_ventil",
+		"EXPECTED": 2
+	  },
+	  	  	  {
+		"NAME": "PRV",
+		"EXPECTED": 2
+	  },
+	  	  	  {
+		"NAME": "PPV",
+		"EXPECTED": { "op": ">=", "value": 2 }
+	  },
+	  	  	  {
+		"NAME": "Sahtni_poklopac",
+		"EXPECTED": 0
+	  },
+	  {
+		"NAME": "Meraci_pritiska",
+		"EXPECTED": [1, 2]
+	  }
+    ]
+  },
+  "PROMENA_MATERIJALA_PRECNIKA": {
+    "PIPES_FC": "Cevovod_validator",
+    "FITTINGS_FC": "Fitinzi",
+    "TIP_FIELD": "tip",
+    "MATERIAL_FIELD": "materijal",
+    "DIAMETER_FIELD": "precnik",
+    "REQUIRE_EXACTLY_2_PIPES": true
+  },
+  "ATRIBUTE_CEVI": {
+    "PIPES_FC": "Cevovod_validator",
+    "REQUIRED_FIELDS": [
+      "ID",
+      "materijal",
+      "precnik"
+    ],
+    "WHERE": null
+  },
+  "DUPLICATE_IDS": {
+    "LAYERS": [
+      "Cevovod_validator",
+      "Fitinzi",
+      "Ekspanziona_posuda",
+      "Ispusti",
+      "Hidranti",
+      "Meraci_protoka",
+      "Meraci_pritiska",
+      "Rezervoari",
+      "Vazdusni_ventili",
+      "PRV",
+      "Izvorista",
+      "Nepovratni_ventil",
+      "PPV",
+      "Pumpe",
+      "Zatvaraci"
+    ],
+    "ID_FIELD": "ID"
+  },
+  "NEPOVEZANA_MREZA": {
+    "PIPES_FC": "Cevovod_validator",
+    "WATER_SOURCES_FC": "Izvori_vode",
+    "SNAP_TOL": "0.1 Meters"
+  },
+  "NIZVODNO": {
+  "PUMPE_FC": "Pumpe",
+  "ZATVARACI_FC": "Zatvaraci"
+  },
+  "FIELDS": {
+    "STATUS": "status",
+    "USAGE": "upotreba",
+	"TYPE": "tip"
+  },
+  "VALUES": {
+    "STATUS": {
+      "ACTIVE": "Aktivan",
+      "INACTIVE": "Neaktivan"
+    },
+	"TYPE": {
+	  "FILTER": "Hvatač nečistoća",
+      "DISCHARGE": "Ispust"
+	},
+    "YESNO": {
+      "YES": "Da",
+      "NO": "Ne"
+    }
+  }
+}
