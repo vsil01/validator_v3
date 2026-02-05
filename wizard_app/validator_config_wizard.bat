@@ -1,3 +1,3 @@
 @echo off
 set SCRIPT_DIR=%~dp0
-python "%SCRIPT_DIR%app.py"
+pythonw "%SCRIPT_DIR%app.py"

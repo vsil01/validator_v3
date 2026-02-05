@@ -1,51 +1,35 @@
-# Validator Config Wizard (Test)
+# Validator Config Wizard (Windows)
 
-Simple Tkinter desktop app for editing the core `config.json` values without touching code.
+Tkinter desktop app for editing validator `config.json` and running `runner.py` without terminal usage.
+
+## What it does
+
+- Lets user fill these fields:
+  - `PROJECT`
+  - `INPUT_GDB`
+  - `SCRATCH_GDB`
+  - `RESULTS_CSV`
+- Saves values to repo-level `config.json`
+- Runs validator (`runner.py config.json`) from GUI button
 
 ## Run
 
-```bash
-python wizard_app/app.py
+### Option 1: Python
+
+```bat
+python wizard_app\app.py
 ```
 
-## Desktop icon launcher (Linux)
-
-A ready-to-use `.desktop` launcher is included at `wizard_app/validator_config_wizard.desktop`.
-Update the paths inside `Exec=` and `Icon=` if your repo lives elsewhere, then:
-
-```bash
-chmod +x wizard_app/validator_config_wizard.desktop
-```
-
-You can double-click it in a Linux desktop environment, or copy it to your desktop/applications
-folder as needed.
-
-## Desktop icon launcher (Windows)
-
-Two options are included for Windows:
-
-1) **Run the batch file directly**
+### Option 2: Double-click launcher
 
 ```bat
 wizard_app\validator_config_wizard.bat
 ```
 
-2) **Create a clickable shortcut (`.lnk`)**
-
-Run the PowerShell helper (from a PowerShell window):
+## Create Windows shortcut (.lnk)
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File wizard_app\create_windows_shortcut.ps1
 ```
 
-This creates `Validator Config Wizard.lnk` in the `wizard_app` folder, which you can move to
-the Desktop or Start Menu.
-
-## Fields
-
-- Project name (`PROJECT`)
-- Input GDB (`INPUT_GDB`)
-- Scratch/Output GDB (`SCRATCH_GDB`)
-- Results CSV (`RESULTS_CSV`)
-
-The app reads/writes the repo-level `config.json` file.
+This creates `Validator Config Wizard.lnk` in `wizard_app` folder. Move it to Desktop if needed.
